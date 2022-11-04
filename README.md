@@ -6,7 +6,7 @@
 
     Wednesday_My_Homework.ipynb = previous non-working iterations
 
-## Build a Shopping Cart
+### Build a Shopping Cart
 Create a Shopping Cart, using either lists or dictionaries. 
 
 The program should have the following capabilities:
@@ -28,7 +28,7 @@ Personal Note:
 "You need an instance of your class and use the instance to do .. instance.method_name(parameters) ...get your instance by doing instance = ClassName(params_for_init_method)" 
                                     - Kevin, the Almighty Dev
 
-## Square Footage Calculator
+### Square Footage Calculator
 Create a function to calculate the square footage of a house by taking in user 
 input and imported functions.
 
@@ -39,7 +39,7 @@ input and imported functions.
 * function: def square_footage
 * constraint: use imported function
 
-## Circumference Calculator
+### Circumference Calculator
 Create a function to calculate the circumference of a circle by taking in user 
 input and imported functions.
 
@@ -56,7 +56,7 @@ input and imported functions.
 https://stackoverflow.com/questions/6149006/how-to-display-a-float-with-two-decimal-places
 
 
-## Class String Methods
+### Class String Methods
 Write a Python class which has two methods: get_String and print_String. 
 * get_String accepts a string from the user.
 * print_String print the string in upper case
