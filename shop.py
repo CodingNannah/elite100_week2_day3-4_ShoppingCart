@@ -143,23 +143,25 @@ class ShoppingCart():
                 itemName = self.merch[itemNumber]["name"] 
                 # itemShort created for cart use
                 itemShort = self.merch[itemNumber]["short"] 
-                itemPrice = (self.merch[itemNumber]["price"])
                 # fix decimal spaces
-                itemPrice = f"{itemPrice:.2f}"
-                print(f"{self.username}, you have chosen to add {itemName} for {itemPrice} to your cart.")
+                itemPrice = round(self.merch[itemNumber]["price"],2)
+                # itemPrice = f"{itemPrice:.2f}"
+                print(f"\n{self.username}, you have chosen to add {itemName} for {itemPrice} to your cart.")
                 # Update cart with short name - handy for easier user removal later
                 print(f"In your cart, {itemName} will look like this: {itemShort}.")
-                itemQuant = int(input(f"How many would you like to add? Type without commas. System doesn't accept them. "))
+                itemQuant = int(input(f"\nHow many would you like to add? (Type without commas. System doesn't accept them.) "))
+                itemSubtotal = float(itemPrice) * int(itemQuant)
                 # update cart with quantity & price - no separate Total to track
-                self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
+                # self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
+                self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemSubtotal}})
                 self.showCart()
             else:
                print(self.invalidResponse)
-        contShop = input("Would you like to continue shopping? [y/n] ")
-        if contShop == ("y","Y", "yes", "Yes"):
-            self.addItem()
-        else:
-            self.showOptions()
+        # contShop = input("Would you like to continue shopping? [y/n] ")
+        # if contShop == ("y","Y", "yes", "Yes"):
+        #     self.addItem()
+        # else:
+        #     self.showOptions()
 
     
     # Option 2 = show cart
@@ -167,11 +169,13 @@ class ShoppingCart():
         print(f"\n{self.username}, here are the items currently in your cart:")
         # format cart to show
         print(self.cart)
-        returnChoices = input("What would you like to do, now? [Options/Checkout] ")
+        returnChoices = input("What would you like to do, now? [Options/Checkout/Shop] ")
         if returnChoices.strip().lower() == "options":
             self.showOptions()
         elif returnChoices.strip().lower() == "checkout":
             self.checkOut()
+        elif returnChoices.strip().lower() == "shop":
+            self.addItem()
         else:
             print(self.invalidResponse)
 
