@@ -115,3 +115,9 @@
         # else:
         #     print(f'{name}, that was not a valid option. Please select a number.')
         #     continue
+
+# contShop = input("Would you like to continue shopping? [y/n] ")
+        # if contShop == ("y","Y", "yes", "Yes"):
+        #     self.addItem()
+        # else:
+        #     self.showOptions()

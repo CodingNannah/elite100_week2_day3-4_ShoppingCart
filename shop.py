@@ -169,34 +169,29 @@ class ShoppingCart():
         # total = 0 
         itemNumber = input('Type the Number of the item you would like to place in your cart: ').strip().lower()
         itemNumber = int(itemNumber)
+
         for item in self.merch:
             if itemNumber == 100:
                 self.showOptions()
             elif itemNumber >=0 and itemNumber <= 11:
                 itemName = self.merch[itemNumber]["name"] 
-                # itemShort created for cart use
-                itemShort = self.merch[itemNumber]["short"] 
-                # fix decimal spaces
                 itemPrice = self.merch[itemNumber]["price"]
-                # itemPrice = f"{itemPrice:.2f}"
                 print(f"\n{self.username}, you have chosen to add {itemName} for {itemPrice} to your cart.")
-                # Update cart with short name - handy for easier user removal later
-                print(f"In your cart, {itemName} will look like this: {itemShort}.")
+                
+                # how many?
                 itemQuant = int(input(f"\nHow many would you like to add? (Type without commas. System doesn't accept them.) "))
                 itemSubtotal = (itemPrice) * int(itemQuant)
+
+                # fix decimal spaces             
                 itemSubtotalF = "{:.2f}".format(itemSubtotal)
+
                 # update cart with quantity & price - no separate Total to track
-                self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemSubtotalF}})
+                self.cart.update({itemName:{"quantity": itemQuant, "subtotal": itemSubtotalF}})
                 self.showCart()
             else:
                print(self.invalidResponse)
-        # contShop = input("Would you like to continue shopping? [y/n] ")
-        # if contShop == ("y","Y", "yes", "Yes"):
-        #     self.addItem()
-        # else:
-        #     self.showOptions()
 
-    
+
     # Option 2 = show cart
     def showCart(self):
         print(f"\n{self.username}, here are the items currently in your cart:")
@@ -254,14 +249,14 @@ class ShoppingCart():
             verifyCheckOut = input(f"{self.username}, are you sure you want to checkout now? [y/n] ")
             if verifyCheckOut != ("y","Y", "yes", "Yes"):
                 self.showOptions()
-            else:
-                for key in self.cart:
-                    key = 
-                    return f''
+            # else:
+            #     for key in self.cart:
+            #         key = 
+            #         return f''
 
                 # self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemSubtotalF}}) 
                 # calculate prices: UT sales tax = 6.1% or .061
-                tax = float(subtotal) * .061
+                # tax = float(subtotal) * .061
                 # total = subtotal + float(tax)
 
                 print("\n")

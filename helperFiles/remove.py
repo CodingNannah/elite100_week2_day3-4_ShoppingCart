@@ -13,3 +13,9 @@
             else:
                 print(self.invalidResponse)
         self.showOptions()
+
+# itemShort created for cart use
+itemShort = self.merch[itemNumber]["short"] 
+
+# Update cart with short name - handy for easier user removal later
+print(f"In your cart, {itemName} will look like this: {itemShort}.")
