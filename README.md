@@ -1,7 +1,8 @@
-# Three Assignments Here:
-    * Shopping Cart in shopping_cart.py
-    * Function for Square Footage in square_footage.py
-    * Function for Circumference in circumference.py
+# Four Assignments Here:
+    * Shopping Cart as shop.py
+    * Function for Square Footage as square_footage.py
+    * Function for Circumference as circumference.py
+    * Class with two String Methods as class_string_methods.py
 
     Wednesday_My_Homework.ipynb = previous non-working iterations
 
@@ -53,3 +54,9 @@ input and imported functions.
 * calculate circumference:
     * float '%.2f' % num or '{:.2f}'.format(num) 
 https://stackoverflow.com/questions/6149006/how-to-display-a-float-with-two-decimal-places
+
+
+## Class String Methods
+Write a Python class which has two methods: get_String and print_String. 
+* get_String accepts a string from the user.
+* print_String print the string in upper case

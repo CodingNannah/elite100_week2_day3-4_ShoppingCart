@@ -1,3 +1,5 @@
+# Wednesday Homework
+
 import math
 from colorama import Fore, Style
 
