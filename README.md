@@ -66,11 +66,5 @@ Call from other functions within the class:
 * "You need an instance of your class and use the instance to do .. instance.method_name(parameters) ...get your instance by doing instance = ClassName(params_for_init_method)" 
                                     - Kevin, the Almighty Dev
 
-Add "small name" to items for sale dict
+Add "small name" to items for merch dict; use interchangeably with cart dict
 * easier for user to del later, while maintaining integrity of full name
-
-Decimal places format on variables
-* https://pythonguides.com/python-print-2-decimal-places/
-* float = 2.154327
-* format_float = "{:.2f}".format(float)
-* print(format_float)

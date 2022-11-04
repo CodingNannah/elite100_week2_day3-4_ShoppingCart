@@ -93,7 +93,40 @@ class ShoppingCart():
                 "price": 2.99
             }
         ]
-        
+
+
+    def showOptions(self):
+        options = ("""   
+
+        ***** Online Shopping Menu *****
+            1: Add Merchandise
+            2: Show Cart
+            3: Remove Merchandise
+            4: Clear Cart
+            5: Check Out
+            0: Quit
+        ********************************* 
+
+        """)
+        print(options)
+        choices = input(f"\n{self.username}, type the number of what you would you like to do? ")
+        choice = int(choices)
+
+        if choice == 0:
+            self.leave()
+        elif choice == 1:
+            self.showMerch() 
+        elif choice == 2:
+            self.showCart()
+        elif choice == 3:
+            self.removeItem()
+        elif choice == 4:
+            self.emptyCart()
+        elif choice == 5:
+            self.checkOut()
+        else:
+            print(self.invalidResponse)
+
 
     def showMerch(self):
         merchTable = (f"""  
@@ -112,7 +145,7 @@ class ShoppingCart():
             {self.merch[10]["id"]}: {self.merch[10]["name"]}, {' '*19}{self.merch[10]["price"]}
             {self.merch[11]["id"]}: {self.merch[11]["name"]}, {' '*24}{self.merch[11]["price"]}
                 
-            100: None of These 
+            -1: None of These 
 
             ***************************************************
             """)
@@ -120,7 +153,7 @@ class ShoppingCart():
         print(merchTable)
         self.addItem()
     
-
+    
     # Option 0 = exit
     def leave(self):
         # if cart, you must check out first!
@@ -153,7 +186,6 @@ class ShoppingCart():
                 itemSubtotal = (itemPrice) * int(itemQuant)
                 itemSubtotalF = "{:.2f}".format(itemSubtotal)
                 # update cart with quantity & price - no separate Total to track
-                # self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
                 self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemSubtotalF}})
                 self.showCart()
             else:
@@ -208,64 +240,54 @@ class ShoppingCart():
 
     # Option 5 = checkout
     def checkOut(self):
-        # calculate prices: UT sales tax = 6.1% or .061
-        tax = float(subtotal) * .061
-        # total = subtotal + float(tax)
-
-
-        print(f'+++++Thank you, {self.name}, for shopping at Coding Nannah\'s Stationery Store!+++++')
-        print('Here is your receipt. It was a pleasure to serve you!')
-        print(f""" 
-        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                              
-                    {self.name}", you found some great products today! 
-                
-                        You purchased {self.cart}.
-            
-                        Your subtotal = $({subtotal:.2f})
-                    
-                        +         tax = ${tax}
-                        ___________________________
-                            
-                                total = $({total:.2f})
-
-                Follow the link to securely pay for your merchandise.
-            We hope you enjoyed your experience and visit us again soon!
-                        
-        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-""")
-        
-    def showOptions(self):
-        options = ("""   
-
-        ***** Online Shopping Menu *****
-            1: Add Merchandise
-            2: Show Cart
-            3: Remove Merchandise
-            4: Clear Cart
-            5: Check Out
-            0: Quit
-        ********************************* 
-
-        """)
-        print(options)
-        choices = input(f"\n{self.username}, type the number of what you would you like to do? ")
-        choice = int(choices)
-
-        if choice == 0:
-            self.leave()
-        elif choice == 1:
-            self.showMerch() 
-        elif choice == 2:
-            self.showCart()
-        elif choice == 3:
-            self.removeItem()
-        elif choice == 4:
-            self.emptyCart()
-        elif choice == 5:
-            self.checkOut()
+        if self.cart != True:
+            returnChoices = input(f"What would you like to do, instead, {self.name}? [Options/Shop/Exit] ")
+            if returnChoices.strip().lower() == "options":
+                self.showOptions()
+            elif returnChoices.strip().lower() == "shop":
+                self.addItem()
+            elif returnChoices.strip().lower() == "exit":
+                self.leave()    
+            else:
+                print(self.invalidResponse)
         else:
-            print(self.invalidResponse)
+            verifyCheckOut = input(f"{self.username}, are you sure you want to checkout now? [y/n] ")
+            if verifyCheckOut != ("y","Y", "yes", "Yes"):
+                self.showOptions()
+            else:
+                for key in self.cart:
+                    key = 
+                    return f''
+
+                # self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemSubtotalF}}) 
+                # calculate prices: UT sales tax = 6.1% or .061
+                tax = float(subtotal) * .061
+                # total = subtotal + float(tax)
+
+                print("\n")
+                print(f""" 
+                ++++++++++++++++++ Sales Receipt ++++++++++++++++++                            
+                        
+                Item                Quantity    Subtotal
+            """)    
+                
+            #     You purchased {self.cart}.
+                    
+            #     Your subtotal = $({subtotal:.2f})
+                            
+            #                 +         tax = ${tax}
+            #                 ___________________________
+                                    
+            #                 total = $({total:.2f})
+
+            #             Follow the link to securely pay for your merchandise.
+            #         We hope you enjoyed your experience and visit us again soon!
+                                
+            # Thank you, {self.name}, for shopping at Coding Nannah\'s Stationery Store!
+            #                 It was a pleasure serving you!
+
+                
+    
 
     # run the program! + welcome/start --> showOptions (action choices)
     def run(self):
