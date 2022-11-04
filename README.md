@@ -22,11 +22,6 @@ The program should have the following capabilities:
 5) The program Loops until user 'quits'
 6) Upon quitting the program, print out all items in the user's list
 
-Personal Note:
-* How to treat quantities?
-* Call from other functions within the class:
-"You need an instance of your class and use the instance to do .. instance.method_name(parameters) ...get your instance by doing instance = ClassName(params_for_init_method)" 
-                                    - Kevin, the Almighty Dev
 
 ### Square Footage Calculator
 Create a function to calculate the square footage of a house by taking in user 
@@ -38,6 +33,7 @@ input and imported functions.
 * output: square feet in float or ave up integer
 * function: def square_footage
 * constraint: use imported function
+
 
 ### Circumference Calculator
 Create a function to calculate the circumference of a circle by taking in user 
@@ -60,3 +56,21 @@ https://stackoverflow.com/questions/6149006/how-to-display-a-float-with-two-deci
 Write a Python class which has two methods: get_String and print_String. 
 * get_String accepts a string from the user.
 * print_String print the string in upper case
+
+
+#### Personal Notes
+How to treat quantities? - fixed: within the cart dict
+* watch for strings & int/floats!
+
+Call from other functions within the class:
+* "You need an instance of your class and use the instance to do .. instance.method_name(parameters) ...get your instance by doing instance = ClassName(params_for_init_method)" 
+                                    - Kevin, the Almighty Dev
+
+Add "small name" to items for sale dict
+* easier for user to del later, while maintaining integrity of full name
+
+Decimal places format on variables
+* https://pythonguides.com/python-print-2-decimal-places/
+* float = 2.154327
+* format_float = "{:.2f}".format(float)
+* print(format_float)
