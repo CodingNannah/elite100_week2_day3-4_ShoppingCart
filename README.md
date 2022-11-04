@@ -17,7 +17,6 @@ The program should have the following capabilities:
     cart = {"item": '', "price": ''}
 3) The User can add or delete items
     * empty shopping cart (list or dictionary)
-    * removed all .strip(), elif or else should cover them
 4) The User can see current shopping list
 5) The program Loops until user 'quits'
 6) Upon quitting the program, print out all items in the user's list
