@@ -144,16 +144,17 @@ class ShoppingCart():
                 # itemShort created for cart use
                 itemShort = self.merch[itemNumber]["short"] 
                 # fix decimal spaces
-                itemPrice = round((self.merch[itemNumber]["price"]),2)
+                itemPrice = self.merch[itemNumber]["price"]
                 # itemPrice = f"{itemPrice:.2f}"
                 print(f"\n{self.username}, you have chosen to add {itemName} for {itemPrice} to your cart.")
                 # Update cart with short name - handy for easier user removal later
                 print(f"In your cart, {itemName} will look like this: {itemShort}.")
                 itemQuant = int(input(f"\nHow many would you like to add? (Type without commas. System doesn't accept them.) "))
                 itemSubtotal = (itemPrice) * int(itemQuant)
+                itemSubtotalF = "{:.2f}".format(itemSubtotal)
                 # update cart with quantity & price - no separate Total to track
                 # self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
-                self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": round(itemSubtotal,2)}})
+                self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemSubtotalF}})
                 self.showCart()
             else:
                print(self.invalidResponse)
@@ -198,8 +199,9 @@ class ShoppingCart():
     def emptyCart(self):
         verifyEmpty = input(f"{self.username}, are you sure you want to empty your entire cart? [y/n] ")
         if verifyEmpty == ("y","Y", "yes", "Yes"):
-            self.merch.clear()
+            self.cart.clear()
             print(self.cart)
+            self.showOptions()
         else:
             self.showOptions()
 
