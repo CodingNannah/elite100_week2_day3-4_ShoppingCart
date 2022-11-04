@@ -11,72 +11,84 @@ class ShoppingCart():
             {
                 "id": 0,
                 "name": 'Parker© Pen (blue)',
+                "short": 'Parker bu',
                 "desc": 'blue + refill', 
                 "price": 14.95
             },
             {
                 "id": 1,
                 "name": 'Parker© Pen (black)',
+                "short": 'Parker bk',
                 "desc": 'black + refill', 
                 "price": 14.95
             },
             {
                 "id": 2,
                 "name": 'Prismacolor© Drawing Pencils',
+                "short": 'Prisma',
                 "desc": 'multicolors', 
                 "price": 42.97
             },
             {
                 "id": 3,
                 "name": 'Profession© Sketch Pencils',
+                "short": 'Pro sketch',
                 "desc": '6B to 4H black', 
                 "price": 14.95
             },
             {
                 "id": 4,
                 "name": 'Mr. Pen© 8-pack Gel Highlighters',
+                "short": 'Mr Pen',
                 "desc": 'multi-colors', 
                 "price": 8.95
             },
             {
                 "id": 5,
                 "name": 'Strathmore© Sketch Pad',
+                "short": 'Strath',
                 "desc": '100 sheets', 
                 "price": 14.95
             },
             {
                 "id": 6,
                 "name": 'Nannah© Planner',
+                "short": 'Nan P',
                 "desc": 'weekly', 
                 "price": 17.95
             },
             {
                 "id": 7,
                 "name": 'Nannah© Journal',
+                "short": 'Nan J',
                 "desc": 'hardbound 500 pages', 
                 "price": 21.95
             },
             {
                 "id": 8,
                 "name": 'Nannah© Notebook-D',
+                "short": 'Nan D',
                 "desc": '100 sheets - dots', 
                 "price": 14.95
             },
             {
                 "id": 9,
                 "name": 'Nannah© Notebook-L',
+                "short": 'Nan L',
                 "desc": '100 sheets - lined', 
                 "price": 14.95
             },
             {
                 "id": 10,
                 "name": 'Nannah© Notebook-G',
+                "short": 'Nan G',
                 "desc": '100 sheets - graphed', 
                 "price": 14.95
             },
             {
                 "id": 11,
                 "name": 'Altoids© Mints',
+                "short": 'Mints',
                 "desc": 'peppermint', 
                 "price": 2.99
             }
@@ -128,11 +140,18 @@ class ShoppingCart():
             if itemNumber == 100:
                 self.showOptions()
             elif itemNumber >=0 and itemNumber <= 11:
-                itemName = self.merch[itemNumber]["name"]
+                itemName = self.merch[itemNumber]["name"] 
+                # itemShort created for cart use
+                itemShort = self.merch[itemNumber]["short"] 
                 itemPrice = (self.merch[itemNumber]["price"])
-                print(f"{self.username}, you have chosen to add {itemName} for {itemPrice:.2f} to your cart.")
-                itemQuant = int(input(f"How many would you like to add? No commas, please. "))
-                self.cart.update({itemName:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
+                # fix decimal spaces
+                itemPrice = f"{itemPrice:.2f}"
+                print(f"{self.username}, you have chosen to add {itemName} for {itemPrice} to your cart.")
+                # Update cart with short name - handy for easier user removal later
+                print(f"In your cart, {itemName} will look like this: {itemShort}.")
+                itemQuant = int(input(f"How many would you like to add? Type without commas. System doesn't accept them. "))
+                # update cart with quantity & price - no separate Total to track
+                self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
                 self.showCart()
             else:
                print(self.invalidResponse)
