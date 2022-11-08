@@ -264,8 +264,12 @@ class ShoppingCart():
                 self.showOptions()
             else:
                 for item in self.cart:
-                    tax = float(self.cart[itemName]["subtotal"]) * .061
-                    total = subtotal + float(tax)
+                    itemName = self.cart[itemName]
+                    itemPrice = "{:.2f}".format(self.cart[itemName]["price"])
+                    itemQuant = self.cart[itemName]["quantity"]
+                    itemSubtotal = "{:.2f}".format((itemPrice) * int(itemQuant))
+                    tax = float(itemSubtotal) * .061
+                    total = "{:.2f}".format(itemSubtotal) + "{:.2f}".format(tax)
 
                 # self.cart.update({itemShort:{"quantity": itemQuant, "subtotal": itemSubtotal}}) 
                 # calculate prices: UT sales tax = 6.1% or .061
@@ -281,7 +285,7 @@ class ShoppingCart():
                                            
                                     
                 Thank you for shopping at Coding Nannah\'s Stationery Store!
-                        It was a pleasure serving you, {self.name}!
+                        It was a pleasure serving you, {self.username}!
 
                     +++++++++++++++++++++++ +++++++++++++++++++++++ 
             """)    
