@@ -1,10 +1,12 @@
 # Four Assignments Here:
+Wednesday's:
     * Shopping Cart as shop.py
     * Function for Square Footage as square_footage.py
     * Function for Circumference as circumference.py
+Thursday's:
+    * Shopping Cart as shop.py (again)
     * Class with two String Methods as class_string_methods.py
 
-    Wednesday_My_Homework.ipynb = previous non-working iterations
 
 ### Build a Shopping Cart
 Create a Shopping Cart, using either lists or dictionaries. 
