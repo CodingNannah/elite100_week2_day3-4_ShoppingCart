@@ -209,16 +209,41 @@ class ShoppingCart():
 
     # Option 3 = remove from cart
     def removeItem(self):
-        remove = input(f"What would you like to remove from your cart, {self.username}? [name of item] ").strip().lowercase()
-        removeQty = int(input("How many would you like to remove? "))
-        for item in self.cart:
-            if remove == self.itemName.strip().lower():
-                self.cart.remove(self.itemName*removeQty)
-                # ({itemName:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
-                return self.cart  
-            else:
-                print(self.invalidResponse)
-        self.showOptions()
+        # warning
+        print("*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*")
+        print(
+            f"\n*!*!  WARNING: At this time, {self.username}, 'Remove Item' is under construction.")
+        print("*!*!  Any item you remove will remove ALL of that item from your cart.")
+        print("*!*!  If you wish to retain a lesser amount of that item in your cart,")
+        print("*!*!  you will be required to add it again to your cart.")
+        print("*!*!  In the event your item is not removed from the cart, contact the Service Desk.")
+        print('')
+        print("*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!")
+        understand = input(f"\nDo you understand the repercussions of removing an item from your cart? [y/n]")
+        if understand == ("n", "N", "no", "No"):
+            self.showOptions()
+
+        # check remove (input[y/n])
+        checkRemove = input(f"\nDo you wish to proceed and remove all of a particular item from your cart? [y/n] ")
+        if checkRemove == ("n", "N", "no", "No"):
+            self.showOptions()
+
+        print(f"\nHere are the items currently in your cart, {self.username}:")
+        print(self.cart)
+        removeItem = input(f"Type the short name of the item you wish to remove from your cart: ").strip().lower()
+        removeQuant = int(input("How many would you like to remove? "))
+        itemName = self.merch[removeItem]["name"] 
+
+        try:
+            for item in self.cart:
+                if itemName in self.cart:
+                    self.cart.delete(itemName)
+                    # ({itemName:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
+                    print(f"{self.username}, you have chosen to remove all of {removeItem} from your cart.")
+                    print(self.cart) 
+                    self.showOptions()
+        except:
+            self.showOptions()
 
     
     # Option 4 = clear cart
