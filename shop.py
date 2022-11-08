@@ -235,13 +235,12 @@ class ShoppingCart():
         itemName = self.merch[removeItem]["name"] 
 
         try:
-            for item in self.cart:
-                if itemName in self.cart:
-                    self.cart.delete(itemName)
-                    # ({itemName:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
-                    print(f"{self.username}, you have chosen to remove all of {removeItem} from your cart.")
-                    print(self.cart) 
-                    self.showOptions()
+            if itemName in self.cart:
+                self.cart.delete(itemName)
+                # ({itemName:{"quantity": itemQuant, "subtotal": itemPrice * itemQuant}})
+                print(f"{self.username}, you have chosen to remove all of {removeItem} from your cart.")
+                print(self.cart) 
+                self.showOptions()
         except:
             self.showOptions()
 
@@ -264,8 +263,8 @@ class ShoppingCart():
                 self.showOptions()
             else:
                 for item in self.cart:
-                    itemName = self.cart[itemName]
-                    itemPrice = "{:.2f}".format(self.cart[itemName]["price"])
+                    itemName = self.merch[itemName]
+                    itemPrice = "{:.2f}".format(self.merch[itemName]["price"])
                     itemQuant = self.cart[itemName]["quantity"]
                     itemSubtotal = "{:.2f}".format((itemPrice) * int(itemQuant))
                     tax = float(itemSubtotal) * .061
@@ -290,24 +289,7 @@ class ShoppingCart():
                     +++++++++++++++++++++++ +++++++++++++++++++++++ 
             """)    
                 
-            #     
-                    
-            #     Your subtotal = $({subtotal:.2f})
-                            
-            #                 +         tax = ${tax}
-            #                 ___________________________
-                                    
-            #                 total = $({total:.2f})
-
-            #             Follow the link to securely pay for your merchandise.
-            #         We hope you enjoyed your experience and visit us again soon!
-                                
-            # Thank you, {self.name}, for shopping at Coding Nannah\'s Stationery Store!
-            #                 It was a pleasure serving you!
-
-                
-    
-
+   
     # run the program! + welcome/start --> showOptions (action choices)
     def run(self):
         print(f"""\n
@@ -318,8 +300,6 @@ class ShoppingCart():
         print(f"\nIt's a pleasure to serve you today, {self.username}!")
 
         self.showOptions()
-
-
 
 shop = ShoppingCart()
 shop.run()
