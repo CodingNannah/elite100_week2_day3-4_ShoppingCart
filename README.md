@@ -1,9 +1,9 @@
 # Four Assignments Here:
-Wednesday's:
+## Wednesday's:
     * Shopping Cart as shop.py
     * Function for Square Footage as square_footage.py
     * Function for Circumference as circumference.py
-Thursday's:
+## Thursday's:
     * Shopping Cart as shop.py (again)
     * Class with two String Methods as class_string_methods.py
 
